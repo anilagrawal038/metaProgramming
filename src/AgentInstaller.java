@@ -1,4 +1,5 @@
 
+import com.replica.Person;
 import com.sun.tools.attach.VirtualMachine;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -178,7 +179,7 @@ public class AgentInstaller {
             // Here we're connecting to the target JVM through the management agent
             connector = JMXConnectorFactory.connect(new JMXServiceURL(connectorAddress));
             MBeanServerConnection server = connector.getMBeanServerConnection();
-            String className = "Person";
+            String className = "com.replica.Person";
             String methodName = "sayHello";
             // Call transformClass on the transformer MBean
             server.invoke(on, "transformClass", new Object[]{className, methodName,null}, new String[]{String.class.getName(),String.class.getName(),String.class.getName()});
